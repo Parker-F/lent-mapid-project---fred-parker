@@ -1,70 +1,65 @@
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.setImage(img`
-        . . . . . . e e c c e e . . . . 
-        . . . . . e 2 2 2 2 2 2 e . . . 
-        . . . . 2 c 2 2 2 2 2 2 c 2 . . 
-        . . . e 2 c 4 2 2 2 2 2 c 2 e . 
-        . . . f 2 2 4 2 2 2 2 2 c 2 f . 
-        . . . f 2 2 4 2 2 2 2 2 2 2 f . 
-        . . . f 2 2 4 2 2 2 2 2 2 2 f . 
-        . . . f 2 c 2 4 4 2 2 2 c 2 f . 
-        . . . e 2 c e c c c c e c 2 e . 
-        . . . e 2 e c b b b b c e 2 e . 
-        . . . e 2 e b b b b b b e 2 e . 
-        . . . e e e e e e e e e e e e . 
-        . . . f e d e e e e e e d e f . 
-        . . . f e 2 d e e e e d 2 e f . 
-        . . . f f e e e e e e e e f f . 
-        . . . . f f . . . . . . f f . . 
-        `)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile`, function (sprite, location) {
+    game.over(false, effects.melt)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 2 2 2 2 2 2 2 2 . . 
-        . . . . . 2 c 2 2 2 2 2 2 4 2 . 
-        . . . . 2 c c 2 2 2 2 2 2 4 c 2 
-        . . d 2 4 c c 2 4 4 4 4 4 4 c c 
-        . d 2 2 4 c b e e e e e e e 2 c 
-        . 2 2 2 4 b e e b b b e b b e 2 
-        . 2 2 2 2 2 e b b b b e b b b e 
-        . 2 2 2 2 e 2 2 2 2 2 e 2 2 2 e 
-        . 2 d d 2 e f e e e f e e e e e 
-        . d d 2 e e e f e e f e e e e e 
-        . e e e e e e e f f f e e e e e 
-        . e e e e f f f e e e e f f f f 
-        . . . e f f f f f e e f f f f f 
-        . . . . f f f f . . . . f f f . 
-        . . . . . . . . . . . . . . . . 
-        `)
+    mySprite.vy = -150
 })
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.setImage(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 2 2 2 2 2 2 . . . . 
-        . . . . . 2 2 4 4 2 2 2 2 . . . 
-        . . . . . c 4 2 2 2 2 2 c . . . 
-        . . . . 2 c 4 2 2 2 2 2 c 2 . . 
-        . . . e 2 c 4 2 2 2 2 2 c 2 e . 
-        . . . f 2 c 4 2 2 2 2 2 c 2 f . 
-        . . . f e c 2 2 2 2 2 2 c e f . 
-        . . . f 2 c 2 b b b b 2 c 2 f . 
-        . . . e 2 2 b c c c c b 2 2 e . 
-        . . . e e b c c c c c c b e e . 
-        . . . f e 4 4 4 4 4 4 4 4 e f . 
-        . . . f e d 2 2 2 2 2 2 d e f . 
-        . . . . 2 d d 2 2 2 2 d d 2 f . 
-        . . . . f 2 d 2 2 2 2 d 2 f . . 
-        . . . . . e 2 2 2 2 2 2 e . . . 
-        `)
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
+    game.over(true)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    game.over(false)
 })
 let mySprite: Sprite = null
-let myCorg = corgio.create(SpriteKind.Player)
-myCorg.updateSprite(true)
-myCorg.verticalMovement()
-myCorg.horizontalMovement()
-myCorg.follow()
-forever(function () {
-    pause(1000)
-    info.changeScoreBy(1)
-})
+scene.setBackgroundColor(6)
+tiles.setTilemap(tilemap`level1`)
+mySprite = sprites.create(img`
+    . . f f f . . . . . . . . f f f 
+    . f f c c . . . . . . f c b b c 
+    f f c c . . . . . . f c b b c . 
+    f c f c . . . . . . f b c c c . 
+    f f f c c . c c . f c b b c c . 
+    f f c 3 c c 3 c c f b c b b c . 
+    f f b 3 b c 3 b c f b c c b c . 
+    . c b b b b b b c b b c c c . . 
+    . c 1 b b b 1 b b c c c c . . . 
+    c b b b b b b b b b c c . . . . 
+    c b c b b b c b b b b f . . . . 
+    f b 1 f f f 1 b b b b f c . . . 
+    f b b b b b b b b b b f c c . . 
+    . f b b b b b b b b c f . . . . 
+    . . f b b b b b b c f . . . . . 
+    . . . f f f f f f f . . . . . . 
+    `, SpriteKind.Player)
+controller.moveSprite(mySprite, 100, 0)
+mySprite.ay = 500
+scene.cameraFollowSprite(mySprite)
+tiles.placeOnRandomTile(mySprite, sprites.dungeon.collectibleInsignia)
+let mySprite2 = sprites.create(img`
+    ........................
+    ........................
+    ........................
+    ........................
+    ..........ffff..........
+    ........ff1111ff........
+    .......fb111111bf.......
+    .......f11111111f.......
+    ......fd11111111df......
+    ......fd11111111df......
+    ......fddd1111dddf......
+    ......fbdbfddfbdbf......
+    ......fcdcf11fcdcf......
+    .......fb111111bf.......
+    ......fffcdb1bdffff.....
+    ....fc111cbfbfc111cf....
+    ....f1b1b1ffff1b1b1f....
+    ....fbfbffffffbfbfbf....
+    .........ffffff.........
+    ...........fff..........
+    ........................
+    ........................
+    ........................
+    ........................
+    `, SpriteKind.Enemy)
+tiles.placeOnRandomTile(mySprite2, assets.tile`transparency16`)
+info.setLife(3)
