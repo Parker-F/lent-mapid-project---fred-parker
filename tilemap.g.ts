@@ -20,6 +20,19 @@ namespace myTiles {
 2 2 2 2 2 . . . . . 2 . . . . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 2 2 2 2 2 . . . . . 2 . . . . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
 `, [myTiles.transparency16,sprites.dungeon.floorDark2,sprites.dungeon.collectibleInsignia,sprites.dungeon.collectibleRedCrystal,sprites.dungeon.collectibleBlueCrystal,sprites.dungeon.chestClosed,myTiles.tile1], TileScale.Sixteen);
+            case "level2":
+            case "level2":return tiles.createTilemap(hex`1e000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000500000000000000000000000000000000000000000000000000000000000000000000030000000000000400000000000000000000000000060000000200000000000000000000000000000000000000000000000002020200000200000200000000000000000000000000000000000000000202020202020202020200000000000200000000000202020202020202020202020202020202020201010101010201010101010202020202020202020202020202`, img`
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+. 2 . . . . . . . . . . . . . . . . . . . . . . . . 2 2 2 . 
+. 2 . . 2 . . . . . . . . . . . . . . . . . . . . 2 2 2 2 2 
+2 2 2 2 2 . . . . . 2 . . . . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 . . . . . 2 . . . . . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`, [myTiles.transparency16,myTiles.tile1,sprites.dungeon.floorMixed,sprites.dungeon.collectibleRedCrystal,sprites.dungeon.collectibleBlueCrystal,sprites.dungeon.chestClosed,sprites.dungeon.collectibleInsignia], TileScale.Sixteen);
         }
         return null;
     })
