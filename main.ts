@@ -1,4 +1,7 @@
 function StartNextLevel () {
+    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
+        value.destroy()
+    }
     currentlevel += 1
     if (currentlevel == 1) {
         tiles.setTilemap(tilemap`level0`)
@@ -88,3 +91,18 @@ controller.moveSprite(mySprite, 100, 0)
 scene.cameraFollowSprite(mySprite)
 info.setLife(3)
 StartNextLevel()
+game.onUpdate(function () {
+    for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
+        if (value.isHittingTile(CollisionDirection.Bottom)) {
+            if (value.vx < 0 && value.tileKindAt(TileDirection.Left, sprites.dungeon.floorMixed)) {
+                value.vy = -150
+            } else if (value.vx > 0 && value.tileKindAt(TileDirection.Right, sprites.dungeon.floorMixed)) {
+                value.vy = -150
+            }
+        } else if (value.isHittingTile(CollisionDirection.Left)) {
+            value.vx = 30
+        } else if (value.isHittingTile(CollisionDirection.Right)) {
+            value.vx = -30
+        }
+    }
+})
