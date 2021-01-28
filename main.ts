@@ -7,7 +7,7 @@ function StartNextLevel () {
     } else if (currentlevel == 3) {
         tiles.setTilemap(tilemap`level8`)
     } else if (currentlevel == 4) {
-    	
+        tiles.setTilemap(tilemap`level11`)
     } else {
         game.over(true, effects.confetti)
     }
