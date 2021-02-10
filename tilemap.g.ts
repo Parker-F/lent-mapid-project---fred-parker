@@ -4,6 +4,22 @@ namespace myTiles {
     export const transparency16 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile1 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile2 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile3 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile5 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile6 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile7 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile8 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile9 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -186,6 +202,17 @@ namespace myTiles {
 22222.2.2..2....2...22..22..22..22..2..2...2....2....2...2..2.2222............................222222
 22222.2.2..2....2...22..22..22..22..2..2...2....2....2...2..2.2222............................222222
 `, [myTiles.transparency16,myTiles.tile1,sprites.dungeon.floorMixed,sprites.dungeon.chestClosed,sprites.dungeon.collectibleRedCrystal,sprites.dungeon.collectibleInsignia], TileScale.Sixteen);
+            case "level12":
+            case "level12":return tiles.createTilemap(hex`0a000800080202020202020202070401010101010101010304010d0e0f10010b0a030401111213010101010304010a010b010c01010304010c0a0101010101030401010a0b01010b010309050505050505050506`, img`
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+`, [myTiles.transparency16,sprites.dungeon.floorMixed,sprites.dungeon.purpleOuterNorth0,sprites.dungeon.purpleOuterEast0,sprites.dungeon.purpleOuterWest1,sprites.dungeon.purpleOuterSouth1,sprites.dungeon.purpleOuterSouthWest,sprites.dungeon.purpleOuterNorthEast,sprites.dungeon.purpleOuterNorthWest,sprites.dungeon.purpleOuterSouthEast,sprites.dungeon.floorDark0,sprites.dungeon.floorLightMoss,sprites.dungeon.floorLight4,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,myTiles.tile9], TileScale.Sixteen);
         }
         return null;
     })
@@ -195,6 +222,22 @@ namespace myTiles {
             case "transparency16":return transparency16;
             case "tile":
             case "tile1":return tile1;
+            case "tile0":
+            case "tile2":return tile2;
+            case "tile10":
+            case "tile3":return tile3;
+            case "tile11":
+            case "tile4":return tile4;
+            case "tile12":
+            case "tile5":return tile5;
+            case "tile13":
+            case "tile6":return tile6;
+            case "tile14":
+            case "tile7":return tile7;
+            case "tile15":
+            case "tile8":return tile8;
+            case "tile16":
+            case "tile9":return tile9;
         }
         return null;
     })
